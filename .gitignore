@@ -8,3 +8,4 @@ dist
 dist-commonjs
 types
 coverage
+yarn-error.log

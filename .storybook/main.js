@@ -1,10 +1,10 @@
 const path = require("path")
 
-const toPath = (_path: string) => path.join(process.cwd(), _path)
+const toPath = (_path) => path.join(process.cwd(), _path)
 
 module.exports = {
   stories: ["../src/**/stories/*.stories.tsx"],
-  webpackFinal: async (config: any) => {
+  webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.mjs$/,
       include: /node_modules/,

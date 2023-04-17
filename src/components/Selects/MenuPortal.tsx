@@ -72,4 +72,4 @@ const MenuPortal = (props: PortalProps) => {
 
 export const customComponents = {
   MenuPortal,
-}
+} as any

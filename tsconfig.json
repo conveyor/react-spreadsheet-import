@@ -1,8 +1,13 @@
 {
   "include": ["src"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
-    "target": "es2020",
+    "target": "es2019",
     "module": "esnext",
+    "declaration": true,
+    "allowJs": true,
+    "isolatedModules": true,
+    "noUnusedLocals": true,
     "moduleResolution": "node",
     "jsx": "react-jsx",
     "baseUrl": "./",
