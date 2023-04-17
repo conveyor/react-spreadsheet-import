@@ -23,6 +23,7 @@
     "build-storybook": "build-storybook -o docs-build",
     "clean": "rimraf dist dist-commonjs types",
     "local": "yarn run build && yalc publish",
+    "ci-test": "yarn run test && yarn run lint && tsc --noEmit",
     "commit": "npx git-cz --disable-emoji --issues"
   },
   "husky": {
