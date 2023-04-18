@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var chakraUiSteps = require('chakra-ui-steps');
 var themeTools = require('@chakra-ui/theme-tools');
+var designTokens = require('@conveyorhq/design-tokens');
 
 const StepsTheme = {
     ...chakraUiSteps.StepsStyleConfig,
@@ -47,26 +48,42 @@ const MatchIconTheme = {
     },
 };
 const themeOverrides = {
+    fonts: {
+        body: designTokens.tokens.type.sans,
+        mono: designTokens.tokens.type.mono,
+    },
     colors: {
-        textColor: "#2D3748",
-        subtitleColor: "#718096",
-        inactiveColor: "#A0AEC0",
-        border: "#E2E8F0",
-        background: "white",
+        textColor: designTokens.tokens.color.gray[800],
+        subtitleColor: designTokens.tokens.color.gray[700],
+        inactiveColor: designTokens.tokens.color.gray[500],
+        border: designTokens.tokens.color.border,
+        background: designTokens.tokens.color.white,
         backgroundAlpha: "rgba(255,255,255,0)",
-        secondaryBackground: "#EDF2F7",
-        highlight: "#E2E8F0",
+        secondaryBackground: designTokens.tokens.color.gray[100],
+        highlight: designTokens.tokens.color.gray[200],
+        // rsi: {
+        //   50: "#E6E6FF",
+        //   100: "#C4C6FF",
+        //   200: "#A2A5FC",
+        //   300: "#8888FC",
+        //   400: "#7069FA",
+        //   500: "#5D55FA",
+        //   600: "#4D3DF7",
+        //   700: "#3525E6",
+        //   800: "#1D0EBE",
+        //   900: "#0C008C",
+        // },
         rsi: {
-            50: "#E6E6FF",
-            100: "#C4C6FF",
-            200: "#A2A5FC",
-            300: "#8888FC",
-            400: "#7069FA",
-            500: "#5D55FA",
-            600: "#4D3DF7",
-            700: "#3525E6",
-            800: "#1D0EBE",
-            900: "#0C008C",
+            50: "rgba(51, 198, 159, 0.15)",
+            100: "rgba(51, 198, 159, 0.30)",
+            200: "rgba(51, 198, 159, 0.45)",
+            300: designTokens.tokens.color.brandGreen[200],
+            400: designTokens.tokens.color.brandGreen[300],
+            500: designTokens.tokens.color.brandGreen[400],
+            600: designTokens.tokens.color.brandGreen[500],
+            700: designTokens.tokens.color.brandGreen[600],
+            800: designTokens.tokens.color.brandGreen[600],
+            900: designTokens.tokens.color.brandGreen[600],
         },
     },
     shadows: {
@@ -83,7 +100,6 @@ const themeOverrides = {
                 title: {
                     fontSize: "2xl",
                     lineHeight: 8,
-                    fontWeight: "semibold",
                     color: "textColor",
                 },
                 subtitle: {
@@ -100,10 +116,9 @@ const themeOverrides = {
                 dropzoneText: {
                     size: "lg",
                     lineHeight: 7,
-                    fontWeight: "semibold",
                     color: "textColor",
                 },
-                dropZoneBorder: "rsi.500",
+                dropZoneBorder: designTokens.tokens.color.border,
                 dropzoneButton: {
                     mt: "1rem",
                 },
@@ -142,14 +157,13 @@ const themeOverrides = {
                     color: "textColor",
                     fontSize: "2xl",
                     lineHeight: 8,
-                    fontWeight: "semibold",
                     mb: 4,
                 },
                 userTable: {
                     header: {
                         fontSize: "xs",
                         lineHeight: 4,
-                        fontWeight: "bold",
+                        fontWeight: designTokens.tokens.fontWeight.medium,
                         letterSpacing: "wider",
                         color: "textColor",
                         overflow: "hidden",
@@ -162,7 +176,6 @@ const themeOverrides = {
                     cell: {
                         fontSize: "sm",
                         lineHeight: 5,
-                        fontWeight: "medium",
                         color: "textColor",
                         px: 6,
                         py: 4,
@@ -183,12 +196,12 @@ const themeOverrides = {
                     text: {
                         fontSize: "sm",
                         lineHeight: 5,
-                        fontWeight: "normal",
+                        fontWeight: designTokens.tokens.fontWeight.regular,
                         color: "inactiveColor",
                         px: 4,
                     },
                     accordionLabel: {
-                        color: "blue.600",
+                        color: designTokens.tokens.color.link,
                         fontSize: "sm",
                         lineHeight: 5,
                         pl: 1,
@@ -198,7 +211,6 @@ const themeOverrides = {
                         pb: 2,
                         fontSize: "md",
                         lineHeight: 6,
-                        fontWeight: "medium",
                         color: "textColor",
                     },
                 },
@@ -334,7 +346,7 @@ const themeOverrides = {
         Modal: {
             baseStyle: {
                 dialog: {
-                    borderRadius: "lg",
+                    borderRadius: designTokens.tokens.borderRadius.DEFAULT,
                     bg: "background",
                     fontSize: "lg",
                     color: "textColor",
@@ -374,13 +386,52 @@ const themeOverrides = {
             },
         },
         Button: {
+            baseStyle: {
+                fontWeight: designTokens.tokens.fontWeight.regular,
+                borderRadius: designTokens.tokens.borderRadius.md,
+            },
             defaultProps: {
                 colorScheme: "rsi",
+            },
+        },
+        Radio: {
+            defaultProps: {
+                colorScheme: "rsi",
+            },
+        },
+        Checkbox: {
+            defaultProps: {
+                colorScheme: "rsi",
+            },
+        },
+        Switch: {
+            defaultProps: {
+                colorScheme: "rsi",
+            },
+        },
+        Heading: {
+            baseStyle: {
+                fontWeight: designTokens.tokens.fontWeight.medium,
             },
         },
     },
     styles: {
         global: {
+            html: {
+                "-webkit-font-smoothing": "initial",
+                textRendering: "initial",
+            },
+            body: {
+                bg: designTokens.tokens.color.gray[100],
+                color: designTokens.tokens.color.gray[800],
+                fontFamily: designTokens.tokens.type.sans,
+                fontSize: designTokens.tokens.fontSize.body,
+                lineHeight: 1.15,
+                transitionProperty: "none",
+                transitionDuration: "unset",
+                fontFeatureSettings: "unset",
+                position: "initial",
+            },
             ".rdg": {
                 contain: "size layout style paint",
                 borderRadius: "lg",
@@ -393,12 +444,12 @@ const themeOverrides = {
                 "--rdg-background-color": "var(--chakra-colors-background)",
                 "--rdg-header-background-color": "var(--chakra-colors-background)",
                 "--rdg-row-hover-background-color": "var(--chakra-colors-background)",
-                "--rdg-selection-color": "var(--chakra-colors-blue-400)",
-                "--rdg-row-selected-background-color": "var(--chakra-colors-rsi-50)",
-                "--row-selected-hover-background-color": "var(--chakra-colors-rsi-100)",
-                "--rdg-error-cell-background-color": "var(--chakra-colors-red-50)",
-                "--rdg-warning-cell-background-color": "var(--chakra-colors-orange-50)",
-                "--rdg-info-cell-background-color": "var(--chakra-colors-blue-50)",
+                "--rdg-selection-color": `${designTokens.tokens.color.blue[400]}`,
+                "--rdg-row-selected-background-color": `${designTokens.tokens.color.blue[0]}`,
+                "--row-selected-hover-background-color": `${designTokens.tokens.color.blue[100]}`,
+                "--rdg-error-cell-background-color": `${designTokens.tokens.color.red[100]}`,
+                "--rdg-warning-cell-background-color": `${designTokens.tokens.color.gold[100]}`,
+                "--rdg-info-cell-background-color": `${designTokens.tokens.color.blue[100]}`,
                 "--rdg-border-color": "var(--chakra-colors-border)",
                 "--rdg-frozen-cell-box-shadow": "none",
                 "--rdg-font-size": "var(--chakra-fontSizes-sm)",
@@ -407,7 +458,7 @@ const themeOverrides = {
                 color: "textColor",
                 fontSize: "xs",
                 lineHeight: 10,
-                fontWeight: "bold",
+                fontWeight: designTokens.tokens.fontWeight.medium,
                 letterSpacing: "wider",
                 textTransform: "uppercase",
                 "&:first-of-type": {
