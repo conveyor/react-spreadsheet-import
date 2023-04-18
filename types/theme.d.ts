@@ -317,7 +317,7 @@ export declare const themeOverrides: {
     readonly styles: {
         readonly global: {
             readonly html: {
-                readonly "-webkit-font-smoothing": "initial";
+                readonly WebkitFontSmoothing: "initial";
                 readonly textRendering: "initial";
             };
             readonly body: {
