@@ -414,7 +414,7 @@ const themeOverrides = {
     styles: {
         global: {
             html: {
-                "-webkit-font-smoothing": "initial",
+                WebkitFontSmoothing: "initial",
                 textRendering: "initial",
             },
             body: {
