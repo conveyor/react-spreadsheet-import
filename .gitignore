@@ -1,11 +1,2 @@
-.snowpack
-build
 node_modules
-.build
-.idea
-web_modules
-dist
-dist-commonjs
-types
-coverage
 yarn-error.log
