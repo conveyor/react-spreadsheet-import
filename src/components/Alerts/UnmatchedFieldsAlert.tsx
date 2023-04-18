@@ -27,14 +27,14 @@ export const UnmatchedFieldsAlert = ({ isOpen, onClose, onConfirm, fields }: Pro
     <AlertDialog isOpen={isOpen} onClose={onClose} leastDestructiveRef={cancelRef} isCentered id="rsi">
       <AlertDialogOverlay>
         <AlertDialogContent>
-          <AlertDialogHeader fontSize="lg" fontWeight="bold">
+          <AlertDialogHeader fontSize="lg" fontWeight={500}>
             {translations.alerts.unmatchedRequiredFields.headerTitle}
           </AlertDialogHeader>
           <AlertDialogBody>
             {translations.alerts.unmatchedRequiredFields.bodyText}
             <Box pt={3}>
               <Text display="inline">{translations.alerts.unmatchedRequiredFields.listTitle}</Text>
-              <Text display="inline" fontWeight="bold">
+              <Text display="inline" fontWeight={500}>
                 {" "}
                 {fields.join(", ")}
               </Text>

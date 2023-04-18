@@ -24,7 +24,7 @@ export const SubmitDataAlert = ({ isOpen, onClose, onConfirm }: Props) => {
     <AlertDialog isOpen={isOpen} onClose={onClose} leastDestructiveRef={cancelRef} isCentered id="rsi">
       <AlertDialogOverlay>
         <AlertDialogContent>
-          <AlertDialogHeader fontSize="lg" fontWeight="bold">
+          <AlertDialogHeader fontSize="lg" fontWeight={500}>
             {translations.alerts.submitIncomplete.headerTitle}
           </AlertDialogHeader>
           <AlertDialogBody>

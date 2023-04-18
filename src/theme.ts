@@ -4,6 +4,7 @@ import type { CSSObject } from "@chakra-ui/react"
 import type { DeepPartial } from "ts-essentials"
 import type { ChakraStylesConfig } from "chakra-react-select"
 import type { SelectOption } from "./types"
+import { tokens } from "@conveyorhq/design-tokens"
 
 type CSSObjectWithActiveStep = CSSObject & { _activeStep: CSSObject }
 
@@ -51,26 +52,42 @@ const MatchIconTheme: any = {
 }
 
 export const themeOverrides = {
+  fonts: {
+    body: tokens.type.sans,
+    mono: tokens.type.mono,
+  },
   colors: {
-    textColor: "#2D3748",
-    subtitleColor: "#718096",
-    inactiveColor: "#A0AEC0",
-    border: "#E2E8F0",
-    background: "white",
+    textColor: tokens.color.gray[800],
+    subtitleColor: tokens.color.gray[700],
+    inactiveColor: tokens.color.gray[500],
+    border: tokens.color.border,
+    background: tokens.color.white,
     backgroundAlpha: "rgba(255,255,255,0)",
-    secondaryBackground: "#EDF2F7",
-    highlight: "#E2E8F0",
+    secondaryBackground: tokens.color.gray[100],
+    highlight: tokens.color.gray[200],
+    // rsi: {
+    //   50: "#E6E6FF",
+    //   100: "#C4C6FF",
+    //   200: "#A2A5FC",
+    //   300: "#8888FC",
+    //   400: "#7069FA",
+    //   500: "#5D55FA",
+    //   600: "#4D3DF7",
+    //   700: "#3525E6",
+    //   800: "#1D0EBE",
+    //   900: "#0C008C",
+    // },
     rsi: {
-      50: "#E6E6FF",
-      100: "#C4C6FF",
-      200: "#A2A5FC",
-      300: "#8888FC",
-      400: "#7069FA",
-      500: "#5D55FA",
-      600: "#4D3DF7",
-      700: "#3525E6",
-      800: "#1D0EBE",
-      900: "#0C008C",
+      50: "rgba(51, 198, 159, 0.15)", // brandGreen[400]
+      100: "rgba(51, 198, 159, 0.30)", // brandGreen[400]
+      200: "rgba(51, 198, 159, 0.45)", // brandGreen[400]
+      300: tokens.color.brandGreen[200],
+      400: tokens.color.brandGreen[300],
+      500: tokens.color.brandGreen[400],
+      600: tokens.color.brandGreen[500],
+      700: tokens.color.brandGreen[600],
+      800: tokens.color.brandGreen[600],
+      900: tokens.color.brandGreen[600],
     },
   },
   shadows: {
@@ -87,7 +104,6 @@ export const themeOverrides = {
         title: {
           fontSize: "2xl",
           lineHeight: 8,
-          fontWeight: "semibold",
           color: "textColor",
         },
         subtitle: {
@@ -104,10 +120,9 @@ export const themeOverrides = {
         dropzoneText: {
           size: "lg",
           lineHeight: 7,
-          fontWeight: "semibold",
           color: "textColor",
         },
-        dropZoneBorder: "rsi.500",
+        dropZoneBorder: tokens.color.border,
         dropzoneButton: {
           mt: "1rem",
         },
@@ -146,14 +161,13 @@ export const themeOverrides = {
           color: "textColor",
           fontSize: "2xl",
           lineHeight: 8,
-          fontWeight: "semibold",
           mb: 4,
         },
         userTable: {
           header: {
             fontSize: "xs",
             lineHeight: 4,
-            fontWeight: "bold",
+            fontWeight: tokens.fontWeight.medium,
             letterSpacing: "wider",
             color: "textColor",
             overflow: "hidden",
@@ -166,7 +180,6 @@ export const themeOverrides = {
           cell: {
             fontSize: "sm",
             lineHeight: 5,
-            fontWeight: "medium",
             color: "textColor",
             px: 6,
             py: 4,
@@ -187,12 +200,12 @@ export const themeOverrides = {
           text: {
             fontSize: "sm",
             lineHeight: 5,
-            fontWeight: "normal",
+            fontWeight: tokens.fontWeight.regular,
             color: "inactiveColor",
             px: 4,
           },
           accordionLabel: {
-            color: "blue.600",
+            color: tokens.color.link,
             fontSize: "sm",
             lineHeight: 5,
             pl: 1,
@@ -202,7 +215,6 @@ export const themeOverrides = {
             pb: 2,
             fontSize: "md",
             lineHeight: 6,
-            fontWeight: "medium",
             color: "textColor",
           },
         },
@@ -338,7 +350,7 @@ export const themeOverrides = {
     Modal: {
       baseStyle: {
         dialog: {
-          borderRadius: "lg",
+          borderRadius: tokens.borderRadius.DEFAULT,
           bg: "background",
           fontSize: "lg",
           color: "textColor",
@@ -378,13 +390,52 @@ export const themeOverrides = {
       },
     },
     Button: {
+      baseStyle: {
+        fontWeight: tokens.fontWeight.regular,
+        borderRadius: tokens.borderRadius.md,
+      },
       defaultProps: {
         colorScheme: "rsi",
+      },
+    },
+    Radio: {
+      defaultProps: {
+        colorScheme: "rsi",
+      },
+    },
+    Checkbox: {
+      defaultProps: {
+        colorScheme: "rsi",
+      },
+    },
+    Switch: {
+      defaultProps: {
+        colorScheme: "rsi",
+      },
+    },
+    Heading: {
+      baseStyle: {
+        fontWeight: tokens.fontWeight.medium,
       },
     },
   },
   styles: {
     global: {
+      html: {
+        "-webkit-font-smoothing": "initial",
+        textRendering: "initial",
+      },
+      body: {
+        bg: tokens.color.gray[100],
+        color: tokens.color.gray[800],
+        fontFamily: tokens.type.sans,
+        fontSize: tokens.fontSize.body,
+        lineHeight: 1.15,
+        transitionProperty: "none",
+        transitionDuration: "unset",
+        fontFeatureSettings: "unset",
+        position: "initial",
+      },
       ".rdg": {
         contain: "size layout style paint",
         borderRadius: "lg",
@@ -398,12 +449,12 @@ export const themeOverrides = {
         "--rdg-background-color": "var(--chakra-colors-background)",
         "--rdg-header-background-color": "var(--chakra-colors-background)",
         "--rdg-row-hover-background-color": "var(--chakra-colors-background)",
-        "--rdg-selection-color": "var(--chakra-colors-blue-400)",
-        "--rdg-row-selected-background-color": "var(--chakra-colors-rsi-50)",
-        "--row-selected-hover-background-color": "var(--chakra-colors-rsi-100)",
-        "--rdg-error-cell-background-color": "var(--chakra-colors-red-50)",
-        "--rdg-warning-cell-background-color": "var(--chakra-colors-orange-50)",
-        "--rdg-info-cell-background-color": "var(--chakra-colors-blue-50)",
+        "--rdg-selection-color": `${tokens.color.blue[400]}`,
+        "--rdg-row-selected-background-color": `${tokens.color.blue[0]}`,
+        "--row-selected-hover-background-color": `${tokens.color.blue[100]}`,
+        "--rdg-error-cell-background-color": `${tokens.color.red[100]}`,
+        "--rdg-warning-cell-background-color": `${tokens.color.gold[100]}`,
+        "--rdg-info-cell-background-color": `${tokens.color.blue[100]}`,
         "--rdg-border-color": "var(--chakra-colors-border)",
         "--rdg-frozen-cell-box-shadow": "none",
         "--rdg-font-size": "var(--chakra-fontSizes-sm)",
@@ -412,7 +463,7 @@ export const themeOverrides = {
         color: "textColor",
         fontSize: "xs",
         lineHeight: 10,
-        fontWeight: "bold",
+        fontWeight: tokens.fontWeight.medium,
         letterSpacing: "wider",
         textTransform: "uppercase",
         "&:first-of-type": {

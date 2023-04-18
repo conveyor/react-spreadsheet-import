@@ -2,26 +2,30 @@ import type { DeepPartial } from "ts-essentials";
 import type { ChakraStylesConfig } from "chakra-react-select";
 import type { SelectOption } from "./types";
 export declare const themeOverrides: {
+    readonly fonts: {
+        readonly body: string;
+        readonly mono: string;
+    };
     readonly colors: {
-        readonly textColor: "#2D3748";
-        readonly subtitleColor: "#718096";
-        readonly inactiveColor: "#A0AEC0";
-        readonly border: "#E2E8F0";
-        readonly background: "white";
+        readonly textColor: string;
+        readonly subtitleColor: string;
+        readonly inactiveColor: string;
+        readonly border: string;
+        readonly background: string;
         readonly backgroundAlpha: "rgba(255,255,255,0)";
-        readonly secondaryBackground: "#EDF2F7";
-        readonly highlight: "#E2E8F0";
+        readonly secondaryBackground: string;
+        readonly highlight: string;
         readonly rsi: {
-            readonly 50: "#E6E6FF";
-            readonly 100: "#C4C6FF";
-            readonly 200: "#A2A5FC";
-            readonly 300: "#8888FC";
-            readonly 400: "#7069FA";
-            readonly 500: "#5D55FA";
-            readonly 600: "#4D3DF7";
-            readonly 700: "#3525E6";
-            readonly 800: "#1D0EBE";
-            readonly 900: "#0C008C";
+            readonly 50: "rgba(51, 198, 159, 0.15)";
+            readonly 100: "rgba(51, 198, 159, 0.30)";
+            readonly 200: "rgba(51, 198, 159, 0.45)";
+            readonly 300: string;
+            readonly 400: string;
+            readonly 500: string;
+            readonly 600: string;
+            readonly 700: string;
+            readonly 800: string;
+            readonly 900: string;
         };
     };
     readonly shadows: {
@@ -38,7 +42,6 @@ export declare const themeOverrides: {
                 readonly title: {
                     readonly fontSize: "2xl";
                     readonly lineHeight: 8;
-                    readonly fontWeight: "semibold";
                     readonly color: "textColor";
                 };
                 readonly subtitle: {
@@ -55,10 +58,9 @@ export declare const themeOverrides: {
                 readonly dropzoneText: {
                     readonly size: "lg";
                     readonly lineHeight: 7;
-                    readonly fontWeight: "semibold";
                     readonly color: "textColor";
                 };
-                readonly dropZoneBorder: "rsi.500";
+                readonly dropZoneBorder: string;
                 readonly dropzoneButton: {
                     readonly mt: "1rem";
                 };
@@ -97,14 +99,13 @@ export declare const themeOverrides: {
                     readonly color: "textColor";
                     readonly fontSize: "2xl";
                     readonly lineHeight: 8;
-                    readonly fontWeight: "semibold";
                     readonly mb: 4;
                 };
                 readonly userTable: {
                     readonly header: {
                         readonly fontSize: "xs";
                         readonly lineHeight: 4;
-                        readonly fontWeight: "bold";
+                        readonly fontWeight: number;
                         readonly letterSpacing: "wider";
                         readonly color: "textColor";
                         readonly overflow: "hidden";
@@ -117,7 +118,6 @@ export declare const themeOverrides: {
                     readonly cell: {
                         readonly fontSize: "sm";
                         readonly lineHeight: 5;
-                        readonly fontWeight: "medium";
                         readonly color: "textColor";
                         readonly px: 6;
                         readonly py: 4;
@@ -138,12 +138,12 @@ export declare const themeOverrides: {
                     readonly text: {
                         readonly fontSize: "sm";
                         readonly lineHeight: 5;
-                        readonly fontWeight: "normal";
+                        readonly fontWeight: number;
                         readonly color: "inactiveColor";
                         readonly px: 4;
                     };
                     readonly accordionLabel: {
-                        readonly color: "blue.600";
+                        readonly color: string;
                         readonly fontSize: "sm";
                         readonly lineHeight: 5;
                         readonly pl: 1;
@@ -153,7 +153,6 @@ export declare const themeOverrides: {
                         readonly pb: 2;
                         readonly fontSize: "md";
                         readonly lineHeight: 6;
-                        readonly fontWeight: "medium";
                         readonly color: "textColor";
                     };
                 };
@@ -246,7 +245,7 @@ export declare const themeOverrides: {
         readonly Modal: {
             readonly baseStyle: {
                 readonly dialog: {
-                    readonly borderRadius: "lg";
+                    readonly borderRadius: string;
                     readonly bg: "background";
                     readonly fontSize: "lg";
                     readonly color: "textColor";
@@ -286,13 +285,52 @@ export declare const themeOverrides: {
             };
         };
         readonly Button: {
+            readonly baseStyle: {
+                readonly fontWeight: number;
+                readonly borderRadius: string;
+            };
             readonly defaultProps: {
                 readonly colorScheme: "rsi";
+            };
+        };
+        readonly Radio: {
+            readonly defaultProps: {
+                readonly colorScheme: "rsi";
+            };
+        };
+        readonly Checkbox: {
+            readonly defaultProps: {
+                readonly colorScheme: "rsi";
+            };
+        };
+        readonly Switch: {
+            readonly defaultProps: {
+                readonly colorScheme: "rsi";
+            };
+        };
+        readonly Heading: {
+            readonly baseStyle: {
+                readonly fontWeight: number;
             };
         };
     };
     readonly styles: {
         readonly global: {
+            readonly html: {
+                readonly "-webkit-font-smoothing": "initial";
+                readonly textRendering: "initial";
+            };
+            readonly body: {
+                readonly bg: string;
+                readonly color: string;
+                readonly fontFamily: string;
+                readonly fontSize: string;
+                readonly lineHeight: 1.15;
+                readonly transitionProperty: "none";
+                readonly transitionDuration: "unset";
+                readonly fontFeatureSettings: "unset";
+                readonly position: "initial";
+            };
             readonly ".rdg": {
                 readonly contain: "size layout style paint";
                 readonly borderRadius: "lg";
@@ -304,12 +342,12 @@ export declare const themeOverrides: {
                 readonly "--rdg-background-color": "var(--chakra-colors-background)";
                 readonly "--rdg-header-background-color": "var(--chakra-colors-background)";
                 readonly "--rdg-row-hover-background-color": "var(--chakra-colors-background)";
-                readonly "--rdg-selection-color": "var(--chakra-colors-blue-400)";
-                readonly "--rdg-row-selected-background-color": "var(--chakra-colors-rsi-50)";
-                readonly "--row-selected-hover-background-color": "var(--chakra-colors-rsi-100)";
-                readonly "--rdg-error-cell-background-color": "var(--chakra-colors-red-50)";
-                readonly "--rdg-warning-cell-background-color": "var(--chakra-colors-orange-50)";
-                readonly "--rdg-info-cell-background-color": "var(--chakra-colors-blue-50)";
+                readonly "--rdg-selection-color": string;
+                readonly "--rdg-row-selected-background-color": string;
+                readonly "--row-selected-hover-background-color": string;
+                readonly "--rdg-error-cell-background-color": string;
+                readonly "--rdg-warning-cell-background-color": string;
+                readonly "--rdg-info-cell-background-color": string;
                 readonly "--rdg-border-color": "var(--chakra-colors-border)";
                 readonly "--rdg-frozen-cell-box-shadow": "none";
                 readonly "--rdg-font-size": "var(--chakra-fontSizes-sm)";
@@ -318,7 +356,7 @@ export declare const themeOverrides: {
                 readonly color: "textColor";
                 readonly fontSize: "xs";
                 readonly lineHeight: 10;
-                readonly fontWeight: "bold";
+                readonly fontWeight: number;
                 readonly letterSpacing: "wider";
                 readonly textTransform: "uppercase";
                 readonly "&:first-of-type": {
