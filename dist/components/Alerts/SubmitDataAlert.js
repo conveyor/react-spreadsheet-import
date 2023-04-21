@@ -8,7 +8,9 @@ const SubmitDataAlert = ({ isOpen, onClose, onConfirm }) => {
     const cancelRef = useRef(null);
     return (jsx(AlertDialog, { isOpen: isOpen, onClose: onClose, leastDestructiveRef: cancelRef, isCentered: true, id: "rsi", children: jsx(AlertDialogOverlay, { children: jsxs(AlertDialogContent, { children: [jsx(AlertDialogHeader, { fontSize: "lg", fontWeight: 500, children: translations.alerts.submitIncomplete.headerTitle }), jsx(AlertDialogBody, { children: allowInvalidSubmit
                             ? translations.alerts.submitIncomplete.bodyText
-                            : translations.alerts.submitIncomplete.bodyTextSubmitForbidden }), jsxs(AlertDialogFooter, { children: [jsx(Button, { ref: cancelRef, onClick: onClose, variant: "secondary", children: translations.alerts.submitIncomplete.cancelButtonTitle }), allowInvalidSubmit && (jsx(Button, { onClick: onConfirm, ml: 3, children: translations.alerts.submitIncomplete.finishButtonTitle }))] })] }) }) }));
+                            : translations.alerts.submitIncomplete.bodyTextSubmitForbidden }), jsxs(AlertDialogFooter, { children: [jsx(Button, { ref: cancelRef, onClick: onClose, variant: "secondary", children: allowInvalidSubmit
+                                    ? translations.alerts.submitIncomplete.cancelButtonTitle
+                                    : translations.alerts.submitIncomplete.cancelButtonTitleSubmitForbidden }), allowInvalidSubmit && (jsx(Button, { onClick: onConfirm, ml: 3, children: translations.alerts.submitIncomplete.finishButtonTitle }))] })] }) }) }));
 };
 
 export { SubmitDataAlert };

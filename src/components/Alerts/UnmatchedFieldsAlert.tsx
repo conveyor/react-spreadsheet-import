@@ -31,7 +31,9 @@ export const UnmatchedFieldsAlert = ({ isOpen, onClose, onConfirm, fields }: Pro
             {translations.alerts.unmatchedRequiredFields.headerTitle}
           </AlertDialogHeader>
           <AlertDialogBody>
-            {translations.alerts.unmatchedRequiredFields.bodyText}
+            {allowInvalidSubmit
+              ? translations.alerts.unmatchedRequiredFields.bodyText
+              : translations.alerts.unmatchedRequiredFields.bodyTextSubmitForbidden}
             <Box pt={3}>
               <Text display="inline">{translations.alerts.unmatchedRequiredFields.listTitle}</Text>
               <Text display="inline" fontWeight={500}>
@@ -42,7 +44,9 @@ export const UnmatchedFieldsAlert = ({ isOpen, onClose, onConfirm, fields }: Pro
           </AlertDialogBody>
           <AlertDialogFooter>
             <Button ref={cancelRef} onClick={onClose} variant="secondary">
-              {translations.alerts.unmatchedRequiredFields.cancelButtonTitle}
+              {allowInvalidSubmit
+                ? translations.alerts.unmatchedRequiredFields.cancelButtonTitle
+                : translations.alerts.unmatchedRequiredFields.cancelButtonTitleSubmitForbidden}
             </Button>
             {allowInvalidSubmit && (
               <Button onClick={onConfirm} ml={3}>

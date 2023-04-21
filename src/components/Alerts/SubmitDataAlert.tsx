@@ -34,7 +34,9 @@ export const SubmitDataAlert = ({ isOpen, onClose, onConfirm }: Props) => {
           </AlertDialogBody>
           <AlertDialogFooter>
             <Button ref={cancelRef} onClick={onClose} variant="secondary">
-              {translations.alerts.submitIncomplete.cancelButtonTitle}
+              {allowInvalidSubmit
+                ? translations.alerts.submitIncomplete.cancelButtonTitle
+                : translations.alerts.submitIncomplete.cancelButtonTitleSubmitForbidden}
             </Button>
             {allowInvalidSubmit && (
               <Button onClick={onConfirm} ml={3}>

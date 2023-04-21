@@ -54,13 +54,16 @@ export declare const translations: {
             bodyText: string;
             bodyTextSubmitForbidden: string;
             cancelButtonTitle: string;
+            cancelButtonTitleSubmitForbidden: string;
             finishButtonTitle: string;
         };
         unmatchedRequiredFields: {
             headerTitle: string;
             bodyText: string;
+            bodyTextSubmitForbidden: string;
             listTitle: string;
             cancelButtonTitle: string;
+            cancelButtonTitleSubmitForbidden: string;
             continueButtonTitle: string;
         };
         toast: {
