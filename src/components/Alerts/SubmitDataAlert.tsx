@@ -21,7 +21,14 @@ export const SubmitDataAlert = ({ isOpen, onClose, onConfirm }: Props) => {
   const cancelRef = useRef<HTMLButtonElement | null>(null)
 
   return (
-    <AlertDialog isOpen={isOpen} onClose={onClose} leastDestructiveRef={cancelRef} isCentered id="rsi">
+    <AlertDialog
+      isOpen={isOpen}
+      onClose={onClose}
+      leastDestructiveRef={cancelRef}
+      isCentered
+      id="rsi"
+      motionPreset="none"
+    >
       <AlertDialogOverlay>
         <AlertDialogContent>
           <AlertDialogHeader fontSize="lg" fontWeight={500}>

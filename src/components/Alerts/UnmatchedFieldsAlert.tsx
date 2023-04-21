@@ -24,7 +24,14 @@ export const UnmatchedFieldsAlert = ({ isOpen, onClose, onConfirm, fields }: Pro
   const cancelRef = useRef<HTMLButtonElement | null>(null)
 
   return (
-    <AlertDialog isOpen={isOpen} onClose={onClose} leastDestructiveRef={cancelRef} isCentered id="rsi">
+    <AlertDialog
+      isOpen={isOpen}
+      onClose={onClose}
+      leastDestructiveRef={cancelRef}
+      isCentered
+      id="rsi"
+      motionPreset="none"
+    >
       <AlertDialogOverlay>
         <AlertDialogContent>
           <AlertDialogHeader fontSize="lg" fontWeight={500}>
