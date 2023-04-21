@@ -53,15 +53,19 @@ export const translations = {
     submitIncomplete: {
       headerTitle: "Errors detected",
       bodyText: "There are still some rows that contain errors. Rows with errors will be ignored when submitting.",
-      bodyTextSubmitForbidden: "There are still some rows containing errors.",
+      bodyTextSubmitForbidden: "There are still some rows containing errors. Please fix before continuing.",
       cancelButtonTitle: "Cancel",
+      cancelButtonTitleSubmitForbidden: "OK",
       finishButtonTitle: "Submit",
     },
     unmatchedRequiredFields: {
       headerTitle: "Not all columns matched",
       bodyText: "There are required columns that are not matched or ignored. Do you want to continue?",
+      bodyTextSubmitForbidden:
+        "There are required columns that are not matched or ignored. Please fix before continuing.",
       listTitle: "Columns not matched:",
       cancelButtonTitle: "Cancel",
+      cancelButtonTitleSubmitForbidden: "OK",
       continueButtonTitle: "Continue",
     },
     toast: {
