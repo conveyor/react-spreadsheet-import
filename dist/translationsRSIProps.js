@@ -1,8 +1,8 @@
 const translations = {
     uploadStep: {
         title: "Upload file",
-        manifestTitle: "Data that we expect:",
-        manifestDescription: "(You will have a chance to rename or remove columns in next steps)",
+        manifestTitle: "Importable columns",
+        manifestDescription: "Two columns are required for import: question and answer. Columns don’t need to be in a specific order. You’ll be able to map, rename, or remove columns in the next step.",
         maxRecordsExceeded: (maxRecords) => `Too many records. Up to ${maxRecords} allowed`,
         dropzone: {
             title: "Upload .xlsx, .xls or .csv file",
