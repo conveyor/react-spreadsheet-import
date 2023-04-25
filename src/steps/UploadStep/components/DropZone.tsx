@@ -39,7 +39,13 @@ export const DropZone = ({ onContinue, isLoading }: DropZoneProps) => {
     onDrop: async ([file]) => {
       setLoading(true)
       const arrayBuffer = await readFileAsync(file)
-      const workbook = XLSX.read(arrayBuffer, { cellDates: true, dateNF: dateFormat, raw: parseRaw })
+      const workbook = XLSX.read(arrayBuffer, {
+        cellDates: true,
+        dateNF: dateFormat,
+        raw: parseRaw,
+        type: "buffer",
+        codepage: 65001,
+      })
       setLoading(false)
       onContinue(workbook)
     },
