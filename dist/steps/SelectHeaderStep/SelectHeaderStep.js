@@ -1,6 +1,6 @@
 import { jsxs, Fragment, jsx } from 'react/jsx-runtime';
 import { useState, useCallback } from 'react';
-import { useStyleConfig, ModalBody, Heading, Box } from '@chakra-ui/react';
+import { useStyleConfig, ModalBody, Heading } from '@chakra-ui/react';
 import { SelectHeaderTable } from './components/SelectHeaderTable.js';
 import { ContinueButton } from '../../components/ContinueButton.js';
 import { useRsi } from '../../hooks/useRsi.js';
@@ -18,7 +18,7 @@ const SelectHeaderStep = ({ data, onContinue }) => {
         await onContinue(data[selectedRowIndex], trimmedData);
         setIsLoading(false);
     }, [onContinue, data, selectedRows]);
-    return (jsxs(Fragment, { children: [jsxs(ModalBody, { pb: 0, children: [jsx(Heading, { ...styles.heading, children: translations.selectHeaderStep.title }), jsx(Box, { h: 0, flexGrow: 1, children: jsx(SelectHeaderTable, { data: data, selectedRows: selectedRows, setSelectedRows: setSelectedRows }) })] }), jsx(ContinueButton, { onContinue: handleContinue, title: translations.selectHeaderStep.nextButtonTitle, isLoading: isLoading })] }));
+    return (jsxs(Fragment, { children: [jsxs(ModalBody, { pb: 0, children: [jsx(Heading, { ...styles.heading, children: translations.selectHeaderStep.title }), jsx(SelectHeaderTable, { data: data, selectedRows: selectedRows, setSelectedRows: setSelectedRows })] }), jsx(ContinueButton, { onContinue: handleContinue, title: translations.selectHeaderStep.nextButtonTitle, isLoading: isLoading })] }));
 };
 
 export { SelectHeaderStep };

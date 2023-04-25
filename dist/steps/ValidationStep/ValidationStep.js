@@ -83,11 +83,11 @@ const ValidationStep = ({ initialData }) => {
     return (jsxs(Fragment, { children: [jsx(SubmitDataAlert, { isOpen: showSubmitAlert, onClose: () => setShowSubmitAlert(false), onConfirm: () => {
                     setShowSubmitAlert(false);
                     submitData();
-                } }), jsxs(ModalBody, { pb: 0, children: [jsxs(Box, { display: "flex", justifyContent: "space-between", alignItems: "center", mb: "2rem", flexWrap: "wrap", gap: "8px", children: [jsx(Heading, { sx: styles.heading, children: translations.validationStep.title }), jsxs(Box, { display: "flex", gap: "16px", alignItems: "center", flexWrap: "wrap", children: [jsx(Button, { variant: "outline", size: "sm", onClick: deleteSelectedRows, children: translations.validationStep.discardButtonTitle }), jsx(Switch, { display: "flex", alignItems: "center", isChecked: filterByErrors, onChange: () => setFilterByErrors(!filterByErrors), children: translations.validationStep.filterSwitchTitle })] })] }), jsx(Box, { h: 0, flexGrow: 1, children: jsx(Table, { rowKeyGetter: rowKeyGetter, rows: tableData, onRowsChange: updateRow, columns: columns, selectedRows: selectedRows, onSelectedRowsChange: setSelectedRows, components: {
-                                noRowsFallback: (jsx(Box, { display: "flex", justifyContent: "center", gridColumn: "1/-1", mt: "32px", children: filterByErrors
-                                        ? translations.validationStep.noRowsMessageWhenFiltered
-                                        : translations.validationStep.noRowsMessage })),
-                            } }) })] }), jsx(ContinueButton, { onContinue: onContinue, title: translations.validationStep.nextButtonTitle })] }));
+                } }), jsxs(ModalBody, { pb: 0, children: [jsxs(Box, { display: "flex", justifyContent: "space-between", alignItems: "center", mb: "2rem", flexWrap: "wrap", gap: "8px", children: [jsx(Heading, { sx: styles.heading, children: translations.validationStep.title }), jsxs(Box, { display: "flex", gap: "16px", alignItems: "center", flexWrap: "wrap", children: [jsx(Button, { variant: "outline", size: "sm", onClick: deleteSelectedRows, children: translations.validationStep.discardButtonTitle }), jsx(Switch, { display: "flex", alignItems: "center", isChecked: filterByErrors, onChange: () => setFilterByErrors(!filterByErrors), children: translations.validationStep.filterSwitchTitle })] })] }), jsx(Table, { rowKeyGetter: rowKeyGetter, rows: tableData, onRowsChange: updateRow, columns: columns, selectedRows: selectedRows, onSelectedRowsChange: setSelectedRows, components: {
+                            noRowsFallback: (jsx(Box, { display: "flex", justifyContent: "center", gridColumn: "1/-1", mt: "32px", children: filterByErrors
+                                    ? translations.validationStep.noRowsMessageWhenFiltered
+                                    : translations.validationStep.noRowsMessage })),
+                        } })] }), jsx(ContinueButton, { onContinue: onContinue, title: translations.validationStep.nextButtonTitle })] }));
 };
 
 export { ValidationStep };
