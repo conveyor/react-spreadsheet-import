@@ -83,6 +83,22 @@ const addErrorsAndRunHooks = (data, fields, rowHook, tableHook) => {
                     });
                     break;
                 }
+                case "maxLength": {
+                    data.forEach((entry, index) => {
+                        var _a, _b;
+                        const value = (_b = (_a = entry[field.key]) === null || _a === void 0 ? void 0 : _a.toString()) !== null && _b !== void 0 ? _b : "";
+                        if (value.length > validation.value) {
+                            errors[index] = {
+                                ...errors[index],
+                                [field.key]: {
+                                    level: validation.level || "error",
+                                    message: validation.errorMessage || `Field exceeded the maximum length of ${validation.value} characters`,
+                                },
+                            };
+                        }
+                    });
+                    break;
+                }
             }
         });
     });

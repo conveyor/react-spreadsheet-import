@@ -20,6 +20,11 @@ export declare const addErrorsAndRunHooks: <T extends string>(data: (Data<T> & P
         readonly flags?: string | undefined;
         readonly errorMessage: string;
         readonly level?: import("../../../types").ErrorLevel | undefined;
+    } | {
+        readonly rule: "maxLength";
+        readonly value: number;
+        readonly errorMessage: string;
+        readonly level?: import("../../../types").ErrorLevel | undefined;
     })[] | undefined;
     readonly fieldType: {
         readonly type: "checkbox";

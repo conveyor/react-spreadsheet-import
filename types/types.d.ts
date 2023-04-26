@@ -59,7 +59,7 @@ export declare type SelectOption = {
 export declare type Input = {
     type: "input";
 };
-export declare type Validation = RequiredValidation | UniqueValidation | RegexValidation;
+export declare type Validation = RequiredValidation | UniqueValidation | RegexValidation | MaxLengthValidation;
 export declare type RequiredValidation = {
     rule: "required";
     errorMessage?: string;
@@ -75,6 +75,12 @@ export declare type RegexValidation = {
     rule: "regex";
     value: string;
     flags?: string;
+    errorMessage: string;
+    level?: ErrorLevel;
+};
+export declare type MaxLengthValidation = {
+    rule: "maxLength";
+    value: number;
     errorMessage: string;
     level?: ErrorLevel;
 };
