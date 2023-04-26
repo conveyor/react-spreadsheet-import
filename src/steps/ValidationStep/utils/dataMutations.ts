@@ -92,6 +92,22 @@ export const addErrorsAndRunHooks = <T extends string>(
           })
           break
         }
+        case "maxLength": {
+          data.forEach((entry, index) => {
+            const value = entry[field.key]?.toString() ?? ""
+            if (value.length > validation.value) {
+              errors[index] = {
+                ...errors[index],
+                [field.key]: {
+                  level: validation.level || "error",
+                  message:
+                    validation.errorMessage || `Field exceeded the maximum length of ${validation.value} characters`,
+                },
+              }
+            }
+          })
+          break
+        }
       }
     })
   })

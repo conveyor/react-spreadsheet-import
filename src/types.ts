@@ -94,7 +94,7 @@ export type Input = {
   type: "input"
 }
 
-export type Validation = RequiredValidation | UniqueValidation | RegexValidation
+export type Validation = RequiredValidation | UniqueValidation | RegexValidation | MaxLengthValidation
 
 export type RequiredValidation = {
   rule: "required"
@@ -113,6 +113,13 @@ export type RegexValidation = {
   rule: "regex"
   value: string
   flags?: string
+  errorMessage: string
+  level?: ErrorLevel
+}
+
+export type MaxLengthValidation = {
+  rule: "maxLength"
+  value: number
   errorMessage: string
   level?: ErrorLevel
 }
