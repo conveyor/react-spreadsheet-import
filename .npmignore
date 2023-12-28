@@ -1,9 +1,0 @@
-.storybook
-src
-static
-.eslintignore
-.eslintrc
-.gitignore
-.nvmrc
-rollup.config.ts
-tsconfig.json

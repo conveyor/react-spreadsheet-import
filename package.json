@@ -12,7 +12,6 @@
   ],
   "scripts": {
     "prepare": "npm run build",
-    "postinstall": "npm run build",
     "start": "storybook dev -p 6006",
     "test:unit": "jest",
     "test:e2e": "npx playwright test",
