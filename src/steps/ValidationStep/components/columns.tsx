@@ -1,4 +1,4 @@
-import { Column, useRowSelection } from "react-data-grid"
+import { Column, SelectColumn, useRowSelection } from "react-data-grid"
 import { Box, Checkbox, Input, Switch, Tooltip } from "@chakra-ui/react"
 import type { Data, Fields } from "../../../types"
 import type { ChangeEvent } from "react"
@@ -15,15 +15,22 @@ function autoFocusAndSelect(input: HTMLInputElement | null) {
 
 export const generateColumns = <T extends string>(fields: Fields<T>): Column<Data<T> & Meta>[] => [
   {
+    ...SelectColumn,
     key: SELECT_COLUMN_KEY,
-    name: "",
-    width: 35,
-    minWidth: 35,
-    maxWidth: 35,
-    resizable: false,
-    sortable: false,
-    frozen: true,
     cellClass: "rdg-checkbox",
+    headerCellClass: "rdg-checkbox",
+    headerRenderer: (props) => {
+      return (
+        <Checkbox
+          bg="white"
+          aria-label="Select"
+          isChecked={props.allRowsSelected}
+          onChange={(event) => {
+            props.onAllRowsSelectionChange(event.target.checked)
+          }}
+        />
+      )
+    },
     formatter: (props) => {
       // eslint-disable-next-line  react-hooks/rules-of-hooks
       const [isRowSelected, onRowSelectionChange] = useRowSelection()
