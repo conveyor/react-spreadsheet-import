@@ -4,8 +4,9 @@ node_modules
 .build
 .idea
 web_modules
-dist
-dist-commonjs
+# Files added to Github so that the package can be installed via Yarn
+# dist
+# dist-commonjs
 types
 coverage
 /test-results/
