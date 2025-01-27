@@ -141,7 +141,7 @@ describe("Validation step tests", () => {
     expect(onClose).not.toBeCalled()
   })
 
-  test("Filters rows with required errors", async () => {
+  test("Filters rows with required errors, clears selection", async () => {
     const UNIQUE_NAME = "very unique name"
     const fields = [
       {
@@ -183,12 +183,24 @@ describe("Validation step tests", () => {
     const validRow = screen.getByText(UNIQUE_NAME)
     expect(validRow).toBeInTheDocument()
 
-    const switchFilter = getFilterSwitch()
+    const selectCheckboxes = screen.getAllByRole("checkbox", {
+      name: "Select",
+    })
+    await userEvent.click(selectCheckboxes[0])
+    expect(selectCheckboxes[0]).toBeChecked()
 
+    const switchFilter = getFilterSwitch()
     await userEvent.click(switchFilter)
 
     const filteredRowsWithHeader = await screen.findAllByRole("row")
     expect(filteredRowsWithHeader).toHaveLength(2)
+
+    // selection was cleared with the filter
+    await userEvent.click(switchFilter)
+    const clearedSelectCheckboxes = screen.getAllByRole("checkbox", {
+      name: "Select",
+    })
+    expect(clearedSelectCheckboxes[0]).not.toBeChecked()
   })
 
   test("Filters rows with errors, fixes row, removes filter", async () => {

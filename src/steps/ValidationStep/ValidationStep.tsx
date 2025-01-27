@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import { Box, Button, Heading, ModalBody, Switch, useStyleConfig, useToast } from "@chakra-ui/react"
 import { ContinueButton } from "../../components/ContinueButton"
 import { useRsi } from "../../hooks/useRsi"
@@ -30,6 +30,11 @@ export const ValidationStep = <T extends string>({ initialData, file, onBack }: 
   const [filterByErrors, setFilterByErrors] = useState(false)
   const [showSubmitAlert, setShowSubmitAlert] = useState(false)
   const [isSubmitting, setSubmitting] = useState(false)
+
+  const clearSelectionAndUpdateFilter = () => {
+    setSelectedRows(new Set())
+    setFilterByErrors(!filterByErrors)
+  }
 
   const updateData = useCallback(
     async (rows: typeof data, indexes?: number[]) => {
@@ -151,7 +156,7 @@ export const ValidationStep = <T extends string>({ initialData, file, onBack }: 
               display="flex"
               alignItems="center"
               isChecked={filterByErrors}
-              onChange={() => setFilterByErrors(!filterByErrors)}
+              onChange={clearSelectionAndUpdateFilter}
             >
               {translations.validationStep.filterSwitchTitle}
             </Switch>
